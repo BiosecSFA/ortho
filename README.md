@@ -1,11 +1,14 @@
-# ortho
+# recoding
+
 
 ### Generating MSA
 TODO: some words of intro on the rational behind using OrthoDB 
 <br><br>
-As a prerequisite you should download the [database of orthologous genes](https://v101.orthodb.org/download/odb10v1_all_og_fasta.tab.gz) (8.5 GB), 
+As a prerequisite you should install [HMMER](http://hmmer.org/documentation.html) and the [HH-suite](https://github.com/soedinglab/hh-suite).
+You will also need to download the [database of orthologous genes](https://v101.orthodb.org/download/odb10v1_all_og_fasta.tab.gz) (8.5 GB), 
 a FASTA file of all species and proteins in OrthoDB orthologous groups.
-For an input FASTA file of proteins all from the same species, featuring both the Uniprotd ids amd AA sequences,
+<br><br>
+For an input FASTA file of proteins all from the same species, featuring both the Uniprotd ids and AA sequences,
 and for a chosen taxonomic level of orthology (set by default to *bacteria*), the following command:
  - returns the mapping betwen the Uniprot ids and OrthoDB ids (saved as *species_ids.txt*);
  - downloads the FASTA files of orthologous proteins (saved as *uniprot_orthologs.fasta*).

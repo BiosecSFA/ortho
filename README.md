@@ -34,5 +34,6 @@ Build the MSAs with the following command:
 - ``-o`` the output directory where the MSAs are saved.
 - ``-r`` the directory where the FASTA files of orthologs are saved.
 - ``-c`` the percentage of sequence coverage [optional, default=90].
-- ``-i`` the pecrentage of identity coverage [optional, default=90].
+- ``-i`` the percentage of identity coverage [optional, default=90].
+- ``-d`` keep at least this seqs in each block of length 50 [optional, default=512].
 - ``-s`` skip the final filtering step (`hhfilter`)

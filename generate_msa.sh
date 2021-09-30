@@ -3,12 +3,13 @@
 # This script builds MSA for target proteins for chosen sequence coverage and sequence identity percentages.
 # Takes as inputs the mapping between the target proteins' Uniprot ids and OrthoDB ids.
 
-# default arguments
+# default arguments (see arguments below for explanation)
 cov=90
 id=90
+dif=512
 
 # arguments passed to script
-while getopts f:o:r:c::i::s arg
+while getopts f:o:r:c::i::d::s arg
 do
     case "${arg}" in
     f) # Specify input file (Uniprot ids <> orthoDB ids)
@@ -21,6 +22,8 @@ do
 	    cov=${OPTARG};;
     i) # Specify sequence identity %
 	    id=${OPTARG};;
+    d) # Keep at least this many seqs in each MSA block of length 50, thus filtering by selecting most diverse set of seqs
+	    dif=${OPTARG};;        
     s) # Skip hhfilter
 	    skip=true;;
     esac
@@ -47,7 +50,7 @@ do
     if [[ !($skip) ]]
     then
         # filter sequences by identity and coverage
-        hhfilter -i "${uniprot_id}.fas" -o "${outdir}/${uniprot_id}.i${id}c${cov}.diff512.a3m" -id "$id" -cov "$cov" -M first -diff 512
+        hhfilter -i "${uniprot_id}.fas" -o "${outdir}/${uniprot_id}.i${id}c${cov}.diff${dif}.a3m" -id "$id" -cov "$cov" -M first -diff "$dif"
     else
        cp "${uniprot_id}.fas" "${outdir}/${uniprot_id}.nofilt.fas"
     fi

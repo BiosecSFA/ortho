@@ -33,5 +33,6 @@ Build the MSAs with the following command:
 - ``-f`` the input file, which is the mapping between the Uniprot ids and OrthoDB ids.
 - ``-o`` the output directory where the MSAs are saved.
 - ``-r`` the directory where the FASTA files of orthologs are saved.
-- ``-c`` the percentage of sequence coverage.
-- ``-i`` the pecrentage of identity coverage.
+- ``-c`` the percentage of sequence coverage [optional, default=90].
+- ``-i`` the pecrentage of identity coverage [optional, default=90].
+- ``-s`` skip the final filtering step (`hhfilter`)

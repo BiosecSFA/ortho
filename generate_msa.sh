@@ -3,9 +3,12 @@
 # This script builds MSA for target proteins for chosen sequence coverage and sequence identity percentages.
 # Takes as inputs the mapping between the target proteins' Uniprot ids and OrthoDB ids.
 
+# default arguments
+cov=90
+id=90
 
 # arguments passed to script
-while getopts f:o:r:c:i: arg
+while getopts f:o:r:c::i::s arg
 do
     case "${arg}" in
     f) # Specify input file (Uniprot ids <> orthoDB ids)
@@ -18,6 +21,8 @@ do
 	    cov=${OPTARG};;
     i) # Specify sequence identity %
 	    id=${OPTARG};;
+    s) # Skip hhfilter
+	    skip=true;;
     esac
 done
 
@@ -39,8 +44,13 @@ do
     # convert sto file to fas file
     perl s2f.pl "${uniprot_id}.sto" "${uniprot_id}.fas"
 
-    # filter sequences by identity and coverage
-    hhfilter -i "${uniprot_id}.fas" -o "${outdir}/${uniprot_id}.i${id}c${cov}.diff512.a3m" -id "$id" -cov "$cov" -M first -diff 512
+    if [[ !($skip) ]]
+    then
+        # filter sequences by identity and coverage
+        hhfilter -i "${uniprot_id}.fas" -o "${outdir}/${uniprot_id}.i${id}c${cov}.diff512.a3m" -id "$id" -cov "$cov" -M first -diff 512
+    else
+       cp "${uniprot_id}.fas" "${outdir}/${uniprot_id}.nofilt.fas"
+    fi
 
     # remove tmp files
     rm "${uniprot_id}.fasta" "${uniprot_id}.sto" "${uniprot_id}.fas"

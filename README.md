@@ -1,9 +1,9 @@
-# recoding
+# ORTHO
 
+## Introduction
+_TODO: some words of intro on the rational behind using OrthoDB_
 
-### Generating MSA
-TODO: some words of intro on the rational behind using OrthoDB 
-<br><br>
+## Generating the MSA
 As a prerequisite you should install [HMMER](http://hmmer.org/documentation.html) and the [HH-suite](https://github.com/soedinglab/hh-suite).
 You will also need to download the [database of orthologous genes](https://v101.orthodb.org/download/odb10v1_all_og_fasta.tab.gz) (8.5 GB), 
 a FASTA file of all species and proteins in OrthoDB orthologous groups.
@@ -37,3 +37,22 @@ Build the MSAs with the following command:
 - ``-i`` the percentage of identity coverage [optional, default=90].
 - ``-d`` keep at least this seqs in each block of length 50 [optional, default=512].
 - ``-s`` skip the final filtering step (`hhfilter`)
+
+## License
+
+Ortho is released as part of the [GENTANGLE](https://github.com/BiosecSFA/gentangle) pipeline ([LLNL](https://www.llnl.gov/)-CODE-845475) and is distributed under the terms of the MIT License (see LICENSE). 
+
+SPDX-License-Identifier: MIT
+
+## Funding
+
+This work is supported by the U.S. Department of Energy, Office of Science, Office of Biological and Environmental Research, Lawrence Livermore National Laboratory Secure Biosystems Design SFA “From Sequence to Cell to Population: Secure and Robust Biosystems Design for Environmental Microorganisms”.  Work at LLNL is performed under the auspices of the U.S. Department of Energy at Lawrence Livermore National Laboratory under Contract DE-AC52-07NA27344. 
+
+___
+
+If you use ORTHO in your research, please cite the following papers. Thanks!
+
+Allen JE, _et al._ **GENTANGLE: integrated computational design of gene entanglements**. _In preparation_. 2022. 
+
+Blazejewski T, Ho HI, Wang HH. **Synthetic sequence entanglement augments stability and containment of genetic information in cells**. _Science_. 2019 Aug 9;365(6453):595-8. https://doi.org/10.1126/science.aav5477
+___
